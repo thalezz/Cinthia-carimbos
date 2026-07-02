@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinthia Carimbos</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        <h1>Cinthia Carimbos</h1>
+    </div>
+
+    <div class="pesquisa">
+        <input type="text" placeholder="Pesquisar carimbos...">
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="#">Carimbos</a>
+        <a href="#">Contato</a>
+        <a href="#">Minha Conta</a>
+        <a href="#">🛒</a>
+    </nav>
+
+</header>
+
+<section class="produtos">
+
+{% for produto in produtos %}
+
+<div class="card">
+
+    <img src="https://via.placeholder.com/250x180.png?text=Carimbo" alt="Produto">
+
+    <h2>{{ produto.nome }}</h2>
+
+    <p>{{ produto.descricao }}</p>
+
+    <span>R$ {{ "%.2f"|format(produto.preco) }}</span>
+
+    <button>Comprar</button>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+</body>
+</html>
