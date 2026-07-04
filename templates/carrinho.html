@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho - Cinthia Carimbos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1 class="titulo-carrinho">Meu Carrinho 🛒</h1>
+
+<section class="carrinho-container">
+
+    {% if carrinho %}
+
+        {% for produto in carrinho %}
+            <div class="item-carrinho">
+                <h2>{{ produto.nome }}</h2>
+                <p>{{ produto.descricao }}</p>
+                <strong>R$ {{ "%.2f"|format(produto.preco) }}</strong>
+
+                <a href="{{ url_for('remover', id=produto['id']) }}" class="btn-remover">
+    Remover
+</a>
+
+            </div>
+        {% endfor %}
+
+        <a href="/" class="btn-comprar">Continuar comprando</a>
+
+    {% else %}
+
+        <p>Seu carrinho está vazio.</p>
+        <a href="/" class="btn-comprar">Voltar para loja</a>
+
+<br>
+        <a href="{{ url_for('finalizar') }}" class="btn-comprar">Finalizar compra</a>
+
+    {% endif %}
+
+    {% if carrinho %}
+        <div class="total">
+            <h3>Total: R$ {{ "%.2f"|format(total) }}</h3>
+        </div>
+    {% endif %}
+
+    {% if carrinho %}
+        <a href="{{ url_for('finalizar') }}" class="btn-comprar">Finalizar compra</a>
+    {% else %}
+        <p>Adicione produtos ao carrinho para finalizar a compra.</p>
+
+    {% endif %}
+
+</section>
+
+</body>
+</html>

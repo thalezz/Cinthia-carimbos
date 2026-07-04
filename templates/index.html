@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinthia Carimbos</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>    
 <header>
 
     <div class="logo">
@@ -29,23 +29,52 @@
 
 </header>
 
-<section class="produtos">
+<section class="banner">
+
+    <div class="banner-texto">
+
+        <h2>Os Melhores Carimbos de Fortaleza</h2>
+
+        <p>
+            Carimbos Automáticos, Datadores, Madeira e Personalizados.
+            Qualidade, rapidez e atendimento profissional.
+        </p>
+
+        <a href="#produtos" class="btn-banner">
+            Comprar Agora
+        </a>
+
+    </div>
+
+    <div class="banner-imagem">
+
+        <img src="{{ url_for('static', filename='img/banner.png') }}">
+
+    </div>
+
+</section>
+
+<section class="produtos" id="produtos">
 
 {% for produto in produtos %}
 
-<div class="card">
+<div class="card produto-card">
+    <img src="{{ url_for('static', filename='img/automatico.jpg') }}" class="card-img-top" alt="Produto">
 
-    <img src="https://via.placeholder.com/250x180.png?text=Carimbo" alt="Produto">
+    <div class="card-body">
+        <h5 class="card-title">{{ produto.nome }}</h5>
 
-    <h2>{{ produto.nome }}</h2>
+        <p class="card-text">{{ produto.descricao }}</p>
 
-    <p>{{ produto.descricao }}</p>
+        <h4 class="preco">R$ {{ "%.2f"|format(produto.preco) }}</h4>
 
-    <span>R$ {{ "%.2f"|format(produto.preco) }}</span>
-
-    <button>Comprar</button>
-
+        <a href="{{ url_for('adicionar', id=produto['id']) }}" class="btn btn-primary w-100">
+            Comprar
+        </a>
+    </div>
 </div>
+
+
 
 {% endfor %}
 
