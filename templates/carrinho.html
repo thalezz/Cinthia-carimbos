@@ -19,10 +19,9 @@
                 <p>{{ produto.descricao }}</p>
                 <strong>R$ {{ "%.2f"|format(produto.preco) }}</strong>
 
-                <a href="{{ url_for('remover', id=produto['id']) }}" class="btn-remover">
+             <a href="{{ url_for('remover', id=produto['id']) }}" class="btn-remover">
     Remover
 </a>
-
             </div>
         {% endfor %}
 
@@ -47,7 +46,7 @@
     {% if carrinho %}
         <a href="{{ url_for('finalizar') }}" class="btn-comprar">Finalizar compra</a>
     {% else %}
-        <p>Adicione produtos ao carrinho para finalizar a compra.</p>
+        <p>Adicione produtos ao carrinho para finalizar a compra.</p>   
 
     {% endif %}
 

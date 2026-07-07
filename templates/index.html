@@ -62,11 +62,14 @@
     <img src="{{ url_for('static', filename='img/automatico.jpg') }}" class="card-img-top" alt="Produto">
 
     <div class="card-body">
-        <h5 class="card-title">{{ produto.nome }}</h5>
+       
+        <a href="{{ url_for('produto', id=produto['id']) }}" class="link-produto">
+    <h5 class="card-title">{{ produto['nome'] }}</h5>
+</a>
 
-        <p class="card-text">{{ produto.descricao }}</p>
+        <p class="card-text">{{ produto['descricao'] }}</p>
 
-        <h4 class="preco">R$ {{ "%.2f"|format(produto.preco) }}</h4>
+        <h4 class="preco">R$ {{ "%.2f"|format(produto['preco']) }}</h4>
 
         <a href="{{ url_for('adicionar', id=produto['id']) }}" class="btn btn-primary w-100">
             Comprar

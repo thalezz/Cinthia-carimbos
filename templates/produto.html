@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ produto.nome }} - Cinthia Carimbos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<section class="produto-detalhe">
+
+    <div class="produto-img">
+        <img src="{{ url_for('static', filename='img/automático.jpg') }}" alt="{{ produto.nome }}">
+    </div>
+
+    <div class="produto-info">
+        <h1>{{ produto.nome }}</h1>
+
+        <p>{{ produto.descricao }}</p>
+
+        <h2>R$ {{ "%.2f"|format(produto.preco) }}</h2>
+
+        <a href="{{ url_for('adicionar', id=produto['id']) }}" class="btn-comprar">
+            Comprar
+        </a>
+
+        <a href="/" class="voltar">← Voltar para loja</a>
+    </div>
+
+</section>
+
+</body>
+</html>
